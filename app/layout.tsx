@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import { Toaster } from "sonner";
 import "./globals.css";
+import { dbConnect } from "@/mongodb";
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -18,11 +19,14 @@ export const metadata: Metadata = {
 	description: "Explore | Learn | Build | Share",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+
+	await dbConnect()
+
 	return (
 		<html lang="en">
 			<body className={cn(inter.className, poppins.className)}>
