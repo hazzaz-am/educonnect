@@ -6,6 +6,6 @@ export interface IModule {
   description: string;
   status: string;
   slug: string;
-  course: string
+  course: ObjectId
   lessonIds: ObjectId[]
 }

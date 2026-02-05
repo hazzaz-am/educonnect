@@ -13,9 +13,12 @@ const courseSchema = new Schema<ICourse>({
 	thumbnail: {
 		type: String,
 	},
-	modules: {
-		type: [Schema.ObjectId],
-	},
+	modules: [
+		{
+			type: Schema.ObjectId,
+			ref: "Module",
+		},
+	],
 	price: {
 		required: true,
 		type: Number,
@@ -26,14 +29,17 @@ const courseSchema = new Schema<ICourse>({
 	},
 	category: {
 		type: Schema.ObjectId,
-		ref: "Category"
+		ref: "Category",
 	},
 	instructor: {
 		type: Schema.ObjectId,
 	},
-	testimonials: {
-		type: [Schema.ObjectId],
-	},
+	testimonials: [
+		{
+			type: Schema.ObjectId,
+			ref: "Testimonial",
+		},
+	],
 	quizSet: {
 		type: Schema.ObjectId,
 	},
