@@ -1,7 +1,7 @@
-import { ICourse } from "@/types";
-import mongoose, { Schema } from "mongoose";
+import { ICourseDocument } from "@/types";
+import mongoose, { Model, Schema } from "mongoose";
 
-const courseSchema = new Schema<ICourse>({
+const courseSchema = new Schema<ICourseDocument>({
 	title: {
 		type: String,
 		required: true,
@@ -45,4 +45,5 @@ const courseSchema = new Schema<ICourse>({
 	},
 });
 
-export const Course = mongoose.models.Course ?? mongoose.model("Course", courseSchema);
+export const Course: Model<ICourseDocument> =
+	mongoose.models.Course ?? mongoose.model<ICourseDocument>("Course", courseSchema);
